@@ -1,0 +1,234 @@
+:root {
+    --bg-gradient-start: #1a1a2e;
+    --bg-gradient-end: #16213e;
+    --text-color: #f5f6fa;
+    --black-door: #2d3436;
+    --red-door: #d63031;
+    --pink-door: #fd79a8;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Outfit', sans-serif;
+    background: linear-gradient(135deg, var(--bg-gradient-start), var(--bg-gradient-end));
+    color: var(--text-color);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.container {
+    text-align: center;
+    width: 100%;
+    max-width: 1000px;
+    padding: 2rem;
+    position: relative;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.title {
+    font-size: 3.5rem;
+    font-weight: 300;
+    margin-bottom: 4rem;
+    letter-spacing: 1px;
+    text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: opacity 0.5s ease;
+}
+
+.subtitle {
+    font-size: 2.2rem;
+    font-weight: 600;
+    opacity: 0.8;
+}
+
+.doors-container {
+    display: flex;
+    justify-content: center;
+    gap: 4rem;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.doors-container.hidden {
+    opacity: 0;
+    pointer-events: none;
+    transform: scale(0.95);
+    position: absolute;
+}
+
+.door-wrapper {
+    perspective: 1200px;
+    width: 160px;
+    height: 280px;
+}
+
+.door {
+    width: 100%;
+    height: 100%;
+    border-radius: 8px 8px 0 0;
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
+    transform-origin: left;
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    border: 2px solid rgba(255, 255, 255, 0.05);
+}
+
+.knob {
+    width: 16px;
+    height: 16px;
+    background: #f1c40f;
+    border-radius: 50%;
+    position: absolute;
+    right: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.6), inset 0 -2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.black-door {
+    background-color: var(--black-door);
+}
+
+.red-door {
+    background-color: var(--red-door);
+}
+
+.pink-door {
+    background-color: var(--pink-door);
+}
+
+/* Hover */
+.door-wrapper:hover .door {
+    transform: scale(1.03) translateY(-5px);
+}
+
+/* Opening */
+.door.open {
+    transform: rotateY(-105deg);
+    box-shadow: 25px 15px 25px rgba(0, 0, 0, 0.5);
+}
+
+/* CONTENT BOX */
+.content-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.95);
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(20px);
+    padding: 3rem;
+    border-radius: 24px;
+    width: 90%;
+    max-width: 600px;
+
+    opacity: 0;
+    pointer-events: none;
+
+    transition: all 0.5s ease;
+    z-index: 10;
+
+    overflow: hidden;
+    /* 🔥 FIX */
+}
+
+.content-container.visible {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+/* TEXT */
+.animated-text {
+    font-size: 2.8rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+
+    opacity: 0;
+    transform: translateY(20px);
+
+    animation: textPop 0.6s ease forwards;
+    animation-delay: 0.3s;
+}
+
+@keyframes textPop {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* MEDIA FIX (IMPORTANT PART) */
+.door-video,
+.door-image {
+    width: 100%;
+    max-width: 400px;
+
+    height: 250px;
+    /* 🔥 FIXES ALL SCROLL ISSUES */
+    object-fit: cover;
+    /* keeps it nice */
+
+    border-radius: 16px;
+    margin: 15px 0;
+
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+
+    opacity: 0;
+    transform: scale(0.95);
+
+    animation: mediaFadeIn 0.7s ease forwards;
+    animation-delay: 0.2s;
+}
+
+@keyframes mediaFadeIn {
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* COLORS */
+#content1 .animated-text {
+    color: #ff4d4d;
+}
+
+#content2 .animated-text {
+    color: #ff7675;
+}
+
+#content3 .animated-text {
+    color: #ff9ff3;
+}
+
+/* BUTTON */
+.back-btn {
+    background: transparent;
+    border: 2px solid white;
+    color: white;
+    padding: 10px 25px;
+    border-radius: 25px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.back-btn:hover {
+    background: white;
+    color: black;
+}
+
+/* HIDDEN */
+.hidden {
+    opacity: 0;
+    pointer-events: none;
+}

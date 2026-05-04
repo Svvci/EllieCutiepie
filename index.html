@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choose a Door</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="title">Hey Ellie, it's Nich.<br><span class="subtitle">now choose a door.</span></h1>
+
+        <div class="doors-container">
+            <div class="door-wrapper" id="door1-wrapper">
+                <div class="door black-door" id="door1">
+                    <div class="knob"></div>
+                </div>
+            </div>
+
+            <div class="door-wrapper" id="door2-wrapper">
+                <div class="door red-door" id="door2">
+                    <div class="knob"></div>
+                </div>
+            </div>
+
+            <div class="door-wrapper" id="door3-wrapper">
+                <div class="door pink-door" id="door3">
+                    <div class="knob"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- BLACK DOOR -->
+        <div class="content-container hidden" id="content1">
+            <h2 class="animated-text">You're Cooked</h2>
+
+            <video class="door-video" autoplay muted loop playsinline>
+                <source src="cooked.mp4" type="video/mp4">
+            </video>
+
+            <button class="back-btn">Go Back</button>
+        </div>
+
+        <!-- RED DOOR -->
+        <div class="content-container hidden" id="content2">
+            <h2 class="animated-text">You're like Sue Heck</h2>
+
+            <img src="sue.jpg" class="door-image" alt="Sue">
+
+            <button class="back-btn">Go Back</button>
+        </div>
+
+        <!-- PINK DOOR -->
+        <div class="content-container hidden" id="content3">
+            <h2 class="animated-text">You're my Wife Honey</h2>
+
+            <img src="wife.jpg" class="door-image" alt="Wife">
+
+            <button class="back-btn">Go Back</button>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
